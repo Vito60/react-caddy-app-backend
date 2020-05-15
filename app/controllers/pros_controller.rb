@@ -45,6 +45,6 @@ class ProsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def pro_params
-      params.require(:pro).permit(:first_name, :last_name, :hometown, :home_city, :home_state, :age)
+      params.require(:pro).permit(:first_name, :last_name, :hometown, :home_state, :age)
     end
 end

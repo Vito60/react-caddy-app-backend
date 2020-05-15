@@ -15,8 +15,8 @@ class ClubsController < ApplicationController
 
   # POST /clubs
   def create
-    @club = Club.new(club_params)
-    @pro = Pro.find(params["pro_id"])
+    @club = Club.new(club_params.reject! { |k| k == "pro_id"})
+    @pro = Pro.find(club_params["pro_id"])
     if @club.save
       pro_club_ids = @pro.clubs.ids.push(@club.id)
       @pro.update(club_ids: pro_club_ids)
